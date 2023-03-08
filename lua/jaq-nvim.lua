@@ -81,6 +81,8 @@ local function float(cmd)
   end
 
   M.buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_option(M.buf, 'modifiable', true)
+
   M.win = vim.api.nvim_open_win(M.buf, true, {
     style    = "minimal",
     relative = "editor",
@@ -99,9 +101,13 @@ local function float(cmd)
   vim.api.nvim_buf_set_keymap(M.buf, 'n', '<ESC>', '<cmd>:lua vim.api.nvim_win_close(' .. M.win .. ', true)<CR>', { silent = true })
   vim.api.nvim_buf_set_keymap(M.buf, 'n', 'q', '<cmd>:lua vim.api.nvim_win_close(' .. M.win .. ', true)<CR>', { silent = true })
 
-  vim.fn.termopen(cmd)
+  local id = vim.fn.termopen(cmd)
 
   vim.cmd("autocmd! VimResized * lua require('jaq-nvim').VimResized()")
+  vim.api.nvim_create_autocmd("WinLeave", {
+    pattern = "*",
+    command = "lua vim.fn.jobstop(" .. id .. ")"
+  })
 
   if config.behavior.startinsert then
     vim.cmd("startinsert")
