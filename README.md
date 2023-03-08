@@ -1,8 +1,23 @@
 <img src="https://img.shields.io/github/stars/is0n/jaq-nvim.svg?style=for-the-badge&label=stars" align="left"/>
 <img src="https://img.shields.io/github/license/is0n/jaq-nvim?style=for-the-badge&logo=GNU" align="right"/>
 
-<h1 align='center'>jaq-nvim</h1>
+<h1 align='center'>nolleh/jaq-nvim</h1>
 
+> a forked version of jaq-nvim adding feature for execute external command independently current file.  
+> PR already made.
+
+execute external system command like in `any vim context`, `any system command`
+
+```bash
+:Jaq float ls -al
+```
+
+the result is..
+
+<img src="docs/images/demo-syscom.png"/>
+
+
+---
 `jaq-nvim` is **J**ust **A**nother **Q**uickrun plugin for Neovim that was inspired by [quickrun.vim](https://github.com/D0n9X1n/quickrun.vim). In short, it is a plugin that lets you run the code of any language with a single command.
 
 ## Demo:
