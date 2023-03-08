@@ -97,6 +97,7 @@ local function float(cmd)
 
   vim.api.nvim_buf_set_option(M.buf, "filetype", "Jaq")
   vim.api.nvim_buf_set_keymap(M.buf, 'n', '<ESC>', '<cmd>:lua vim.api.nvim_win_close(' .. M.win .. ', true)<CR>', { silent = true })
+  vim.api.nvim_buf_set_keymap(M.buf, 'n', 'q', '<cmd>:lua vim.api.nvim_win_close(' .. M.win .. ', true)<CR>', { silent = true })
 
   vim.fn.termopen(cmd)
 
@@ -118,6 +119,7 @@ local function term(cmd)
 
   vim.api.nvim_buf_set_option(M.buf, "filetype", "Jaq")
   vim.api.nvim_buf_set_keymap(M.buf, 'n', '<ESC>', '<cmd>:bdelete!<CR>', { silent = true })
+  vim.api.nvim_buf_set_keymap(M.buf, 'n', 'q', '<cmd>:bdelete!<CR>', { silent = true })
 
   if config.behavior.startinsert then
     vim.cmd("startinsert")
